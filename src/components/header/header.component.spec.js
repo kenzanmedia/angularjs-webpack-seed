@@ -22,16 +22,16 @@ describe('tgh.component.header', () => {
   });
 
   it('should test the header component exists', () => {
-    expect(scope).toBeDefined();
-    expect(element).toBeDefined();
-    expect(element.find('header').length).toBe(1);
+    expect(scope).to.not.be.undefined;
+    expect(element).to.not.be.undefined;
+    expect(element.find('header').length).to.equal(1);
   });
 
   it('should test the banner text is correct is correct', () => {
     let banner = element.find('h2');
 
-    expect(banner.html()).toBe('The Greenhouse.io - AngularJS / Webpack Starter Kit');
-    expect(banner.length).toBe(1);
+    expect(banner.html()).to.equal('The Greenhouse.io - AngularJS / Webpack Starter Kit');
+    expect(banner.length).to.equal(1);
   });
 
 });

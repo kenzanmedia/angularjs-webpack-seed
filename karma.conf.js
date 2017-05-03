@@ -6,29 +6,34 @@ const webpackConfig = require('./webpack.config.common');
 
 // TODO issues with karma and CommonChunksPlugin
 // https://github.com/webpack/karma-webpack/issues/24
-webpackConfig.plugins[2] = function() {};
+webpackConfig.plugins[webpackConfig.plugins.length - 1] = function() {};
 
+// dont fail on eslint errors while developing
+webpackConfig.module.rules[0].use[1].options.failOnError = isProductionBuild;
 
 module.exports = function(config) {
   const logLevel = isProductionBuild ? config.LOG_DEBUG : config.LOG_INFO;
 
   config.set({
     basePath: './',
-    frameworks: ['jasmine'],
+    frameworks: ['mocha', 'sinon-chai'],
     files: [
+      // included here to ensure proper loading order and availablity of jquery + angular + mocks to Karma
+      { pattern: './node_modules/jquery/dist/jquery.js', watched: false },
       { pattern: './node_modules/angular/angular.js', watched: false },
       { pattern: './node_modules/angular-mocks/angular-mocks.js', watched: false },
-      { pattern: 'src/**/*.spec.js', watched: false }
+      { pattern: './src/**/*.spec.js', watched: true }
     ],
 
     preprocessors: {
-      '**/*.spec.js': ['webpack', 'coverage']
+      'src/**/*.js': ['webpack', 'sourcemap', 'coverage']
     },
 
     webpack: webpackConfig,
 
     reporters: ['progress', 'dots', 'junit', 'coverage'],
     port: 9876,
+    browserDisconnectTolerance: 1,
     logLevel: logLevel,
     autoWatch: shouldWatch,
     browsers: [browser],
@@ -36,14 +41,15 @@ module.exports = function(config) {
     concurrency: Infinity,
     junitReporter: {
       outputDir: './reports/',
-      outputFile: 'test-results.xml',
+      outputFile: 'test-results/test-results.xml',
       suite: 'seed-webapp',
       useBrowserName: false
     },
     coverageReporter: {
-      type : 'cobertura',
-      dir : './reports',
-      subdir: 'coverage'
+      type: 'cobertura',
+      dir: './reports',
+      subdir: 'test-coverage/phantomjs',
+      file: 'coverage.xml'
     }
   });
 

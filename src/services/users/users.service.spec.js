@@ -12,37 +12,37 @@ describe('tgh.services.users', () => {
   });
 
   it('should test the service exists', () => {
-    expect(UsersService).toBeDefined();
-    expect(usersService).toBeDefined();
-    expect(usersService.getUsers).toBeDefined();
-    expect(usersService.getPrimaryUser).toBeDefined();
-    expect(usersService.addUser).toBeDefined();
-    expect(usersService.deleteUser).toBeDefined();
+    expect(UsersService).to.not.be.undefined;
+    expect(usersService).to.not.be.undefined;
+    expect(usersService.getUsers).to.not.be.undefined;
+    expect(usersService.getPrimaryUser).to.not.be.undefined;
+    expect(usersService.addUser).to.not.be.undefined;
+    expect(usersService.deleteUser).to.not.be.undefined;
   });
 
   it('should test that first call to getUsers returns expected default users', () => {
     let users = usersService.getUsers();
 
-    expect(users.length).toBe(2);
+    expect(users.length).to.equal(2);
 
-    expect(users[0].id).toBe(1);
-    expect(users[0].firstName).toBe('Owen');
-    expect(users[0].lastName).toBe('Buckley');
-    expect(users[0].isPrimary).toBe(true);
+    expect(users[0].id).to.equal(1);
+    expect(users[0].firstName).to.equal('Owen');
+    expect(users[0].lastName).to.equal('Buckley');
+    expect(users[0].isPrimary).to.equal(true);
 
-    expect(users[1].id).toBe(2);
-    expect(users[1].firstName).toBe('The');
-    expect(users[1].lastName).toBe('Greenhouse');
-    expect(users[1].isPrimary).toBe(false);
+    expect(users[1].id).to.equal(2);
+    expect(users[1].firstName).to.equal('The');
+    expect(users[1].lastName).to.equal('Greenhouse');
+    expect(users[1].isPrimary).to.equal(false);
   });
 
   it('should test that getPrimaryUser call works as expected', () => {
     let primaryUser = new UsersService().getPrimaryUser();
 
-    expect(primaryUser.id).toBe(1);
-    expect(primaryUser.firstName).toBe('Owen');
-    expect(primaryUser.lastName).toBe('Buckley');
-    expect(primaryUser.isPrimary).toBe(true);
+    expect(primaryUser.id).to.equal(1);
+    expect(primaryUser.firstName).to.equal('Owen');
+    expect(primaryUser.lastName).to.equal('Buckley');
+    expect(primaryUser.isPrimary).to.equal(true);
   });
 
   it('should test that addUsers call works as expected', () => {
@@ -66,16 +66,16 @@ describe('tgh.services.users', () => {
       }
     });
 
-    expect(found).toBe(true);
+    expect(found).to.equal(true);
   });
 
   it('should test that getPrimaryUser call works as expected', () => {
     let primaryUser = usersService.getPrimaryUser();
 
-    expect(primaryUser.id).toBe(1);
-    expect(primaryUser.firstName).toBe('Owen');
-    expect(primaryUser.lastName).toBe('Buckley');
-    expect(primaryUser.isPrimary).toBe(true);
+    expect(primaryUser.id).to.equal(1);
+    expect(primaryUser.firstName).to.equal('Owen');
+    expect(primaryUser.lastName).to.equal('Buckley');
+    expect(primaryUser.isPrimary).to.equal(true);
   });
 
   it('should test that deleteUsers call works as expected when starting with default users', () => {
@@ -105,17 +105,17 @@ describe('tgh.services.users', () => {
     // get users
     users = usersService.getUsers();
 
-    expect(users.length).toBe(2);
+    expect(users.length).to.equal(2);
 
-    expect(users[0].id).toBe(1);
-    expect(users[0].firstName).toBe('Owen');
-    expect(users[0].lastName).toBe('Buckley');
-    expect(users[0].isPrimary).toBe(true);
+    expect(users[0].id).to.equal(1);
+    expect(users[0].firstName).to.equal('Owen');
+    expect(users[0].lastName).to.equal('Buckley');
+    expect(users[0].isPrimary).to.equal(true);
 
-    expect(users[1].id).toBe(2);
-    expect(users[1].firstName).toBe('The');
-    expect(users[1].lastName).toBe('Greenhouse');
-    expect(users[1].isPrimary).toBe(false);
+    expect(users[1].id).to.equal(2);
+    expect(users[1].firstName).to.equal('The');
+    expect(users[1].lastName).to.equal('Greenhouse');
+    expect(users[1].isPrimary).to.equal(false);
   });
 
 });

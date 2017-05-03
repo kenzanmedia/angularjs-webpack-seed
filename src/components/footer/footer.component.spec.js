@@ -22,18 +22,18 @@ describe('tgh.component.footer', () => {
   });
 
   it('should test the footer component exists', () => {
-    expect(scope).toBeDefined();
-    expect(element).toBeDefined();
-    expect(element.find('footer').length).toBe(1);
+    expect(scope).to.not.be.undefined;
+    expect(element).to.not.be.undefined;
+    expect(element.find('footer').length).to.equal(1);
   });
 
   it('should test the year is correct', () => {
     let year = new Date().getFullYear();
     let copyright = element.find('p');
 
-    expect(copyright.html()).toBe('© 2014 - ' + year);
-    expect(copyright.length).toBe(1);
-    expect(copyright.hasClass('copyright')).toBe(true);
+    expect(copyright.html()).to.equal('© 2014 - ' + year);
+    expect(copyright.length).to.equal(1);
+    expect(copyright.hasClass('copyright')).to.equal(true);
   });
 
 });

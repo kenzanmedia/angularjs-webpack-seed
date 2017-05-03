@@ -22,20 +22,20 @@ describe('tgh.component.navigation', () => {
   });
 
   it('should test the navigation component exists', () => {
-    expect(scope).toBeDefined();
-    expect(element).toBeDefined();
-    expect(element.find('nav').length).toBe(1);
-    expect(element.find('ul').length).toBe(1);
+    expect(scope).to.not.be.undefined;
+    expect(element).to.not.be.undefined;
+    expect(element.find('nav').length).to.equal(1);
+    expect(element.find('ul').length).to.equal(1);
   });
 
   it('should test that links are set correctly', () => {
     let links = element.find('a');
 
-    expect(element.find('li').length).toBe(2);
-    expect(element.find('a').length).toBe(2);
+    expect(element.find('li').length).to.equal(2);
+    expect(element.find('a').length).to.equal(2);
 
-    expect(links[0].text).toBe('Home');
-    expect(links[1].text).toBe('Users');
+    expect(links[0].text).to.equal('Home');
+    expect(links[1].text).to.equal('Users');
   });
 
 });
