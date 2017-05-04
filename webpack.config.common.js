@@ -21,7 +21,7 @@ module.exports = {
           presets: [
             ['es2015', { modules: false }]
           ]
-        },
+        }
       }, {
         loader: 'eslint-loader',
         options: {
@@ -30,7 +30,7 @@ module.exports = {
         }
       }]
     }, {
-      test:  /\.html$/,
+      test: /\.html$/,
       use: [{
         loader: 'html-loader'
       }]
