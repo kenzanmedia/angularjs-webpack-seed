@@ -69,7 +69,7 @@ a feather) organization.
 * _src_ - application code
 * _src/components/_ - resusable UI features, typically directives.  A `BootstrapComponent` has been designated to manage starting up the application, from _index.js_
 * _src/services/_ -  APIs for handling backend REST APIs or browser APIs, non UI related "helpers"
-* _src/views/_ -  routable states ("pages"), generally exposed with `class` controllers
+* _src/views/_ -  routable states ("pages"), generally exposed with `class` controllers. Some are configured to [lazy load](https://github.com/kenzanmedia/angularjs-webpack-seed/wiki#lazy-loading).
 * _src/index.html_ - main layout of the application
 * _src/index.js_ - main entry way into the application and pulls in the application's `BootstrapComponent`
 * _src/routes.js_ - routes for the application, maps to different views
