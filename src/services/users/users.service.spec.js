@@ -93,11 +93,9 @@ describe('tgh.services.users', () => {
     users = usersService.getUsers();
 
     // get our user
-    user = users.filter((user) => {
-      if ((user.firstName + user.lastName) === (newUser.firstName + newUser.lastName)) {
-        return user;
-      }
-    })[0];
+    user = users.find((user) => {
+      return (user.firstName + user.lastName) === (newUser.firstName + newUser.lastName);
+    });
 
     // add a user
     usersService.deleteUser(user.id);

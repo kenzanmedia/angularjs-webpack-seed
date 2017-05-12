@@ -18,9 +18,7 @@ export default class UsersService {
   }
 
   getPrimaryUser() {
-    return this.users.filter((user) => {
-      return user.isPrimary;
-    })[0];
+    return this.users.find(user => user.isPrimary);
   }
 
   addUser(firstName, lastName) {
