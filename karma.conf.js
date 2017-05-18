@@ -18,6 +18,7 @@ module.exports = function(config) {
     basePath: './',
     frameworks: ['mocha', 'sinon-chai'],
     files: [
+      { pattern: './node_modules/phantomjs-polyfill-find/find-polyfill.js', watched: false },
       // included here to ensure proper loading order and availablity of jquery + angular + mocks to Karma
       { pattern: './node_modules/jquery/dist/jquery.js', watched: false },
       { pattern: './node_modules/angular/angular.js', watched: false },

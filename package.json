@@ -64,6 +64,7 @@
     "mocha": "^3.3.0",
     "ng-annotate-webpack-plugin": "^0.2.1-pre",
     "node-sass": "^4.5.2",
+    "phantomjs-polyfill-find": "ptim/phantomjs-polyfill-find",
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.3",
     "sinon": "^2.2.0",
